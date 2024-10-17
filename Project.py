@@ -91,23 +91,23 @@ if st.button("Analyse"):
                                          max_output_tokens=20,
                                          stop_sequences=[","],
                                          temperature =0)
-                                       )    
-  with open("UBMM1011_FICT_G11_MICROSOFT CORPORATION (2).pdf", "rb") as pdf_file:
-    pdf_reader = PyPDF2.PdfReader(pdf_file)
-    # Extract text from the PDF
-    text = ""
-    for page in range(len(pdf_reader.pages)):
-      text += pdf_reader.pages[page].extract_text()
-    response = model.generate_content(text)
+  #                                      )    
+  # with open("UBMM1011_FICT_G11_MICROSOFT CORPORATION (2).pdf", "rb") as pdf_file:
+  #   pdf_reader = PyPDF2.PdfReader(pdf_file)
+  #   # Extract text from the PDF
+  #   text = ""
+  #   for page in range(len(pdf_reader.pages)):
+  #     text += pdf_reader.pages[page].extract_text()
+  #   response = model.generate_content(text)
 
   
-  with open("UBMM1011_FICT_L4_G12_Nestle.pdf", "rb") as pdf_file:
-    pdf_reader = PyPDF2.PdfReader(pdf_file)
-    # Extract text from the PDF
-    text = ""
-    for page in range(len(pdf_reader.pages)):
-      text += pdf_reader.pages[page].extract_text()
-    response = model.generate_content(text)
+  # with open("UBMM1011_FICT_L4_G12_Nestle.pdf", "rb") as pdf_file:
+  #   pdf_reader = PyPDF2.PdfReader(pdf_file)
+  #   # Extract text from the PDF
+  #   text = ""
+  #   for page in range(len(pdf_reader.pages)):
+  #     text += pdf_reader.pages[page].extract_text()
+  #   response = model.generate_content(text)
   
   st.write(response.text)
   
