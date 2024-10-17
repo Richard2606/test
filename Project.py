@@ -88,7 +88,7 @@ if st.button("Analyse"):
       for page in range(len(pdf_reader.pages)):
         text += pdf_reader.pages[page].extract_text()
       response = model.generate_content(text,generation_config= genai.types.GenerationConfig(
-                                         max_output_tokens=200,
+                                         max_output_tokens=20,
                                          stop_sequences=[","],
                                          temperature =0)
                                        )    
@@ -99,6 +99,8 @@ if st.button("Analyse"):
     for page in range(len(pdf_reader.pages)):
       text += pdf_reader.pages[page].extract_text()
     response = model.generate_content(text)
+
+  
   with open("UBMM1011_FICT_L4_G12_Nestle.pdf", "rb") as pdf_file:
     pdf_reader = PyPDF2.PdfReader(pdf_file)
     # Extract text from the PDF
