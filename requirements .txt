@@ -1,4 +1,0 @@
-streamlit
-openai
-PIL.Image
-PyPDF2
