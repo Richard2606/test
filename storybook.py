@@ -1,7 +1,7 @@
 import streamlit as st
 from openai import OpenAI
 
-client = OpenAI(api_key = st.secrets['key'])
+client = OpenAI(api_key=st.secrets["key"])
 
 def story_gebn(prompt):
   system_prompt = """You are the world renowned author for young adults fiction short stories. Given a concept, generate a short story revelant to the themes of the concept with a twist ending."""

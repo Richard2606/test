@@ -1,19 +1,18 @@
-import os
 import google.generativeai as genai
 import streamlit as st
 import PyPDF2
 import PIL.Image 
 
-my_secret = os.environ['GEMINIKEY']
+my_secret = st.secrets['GEMINIKEY']
 genai.configure(api_key=my_secret)
 model = genai.GenerativeModel("gemini-1.5-flash",
   system_instruction ="""
   You are a teahcer who are able to help learners to succeed in the essay writing especially in English Language.
   The learner will have their input in the form of file, image or text. 
-  You will check the file, image or text and give the output with the strengths and weaknesses based on the essay that they have given. 
-  In addition, you have to determnine which type of essay that is suitable to them. 
-  The type of essay would be narraitve, argumentative, expository, and persuasive. 
-  Just give the output in the form of strengths and weaknesses of the user based on the files given not for the essay and also the type of essay that is suitable to the user.
+  You will check the file, image or text and give the output with the list below:
+  1. strengths and weaknesses based on the essay that they have given. 
+  2. which type of essay that is suitable to them. The type of essay would be narraitve, argumentative, expository, and persuasive. 
+
   """)
 
 
@@ -87,8 +86,11 @@ if st.button("Analyse"):
       text = ""
       for page in range(len(pdf_reader.pages)):
         text += pdf_reader.pages[page].extract_text()
-      response = model.generate_content(text)
-    
+      response = model.generate_content(text,generation_config= genai.types.GenerationConfig(
+                                         max_output_tokens=200,
+                                         stop_sequences=[","],
+                                         temperature =0)
+                                       )    
   with open("UBMM1011_FICT_G11_MICROSOFT CORPORATION (2).pdf", "rb") as pdf_file:
     pdf_reader = PyPDF2.PdfReader(pdf_file)
     # Extract text from the PDF
