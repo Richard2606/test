@@ -89,7 +89,6 @@ if st.button("Analyse"):
         text += pdf_reader.pages[page].extract_text()
       response = model.generate_content(text,generation_config= genai.types.GenerationConfig(
                                          max_output_tokens=200,
-                                         stop_sequences=[","],
                                          temperature =0)
                                         )    
   # with open("UBMM1011_FICT_G11_MICROSOFT CORPORATION (2).pdf", "rb") as pdf_file:
