@@ -91,7 +91,7 @@ if st.button("Analyse"):
                                          max_output_tokens=20,
                                          stop_sequences=[","],
                                          temperature =0)
-  #                                      )    
+                                        )    
   # with open("UBMM1011_FICT_G11_MICROSOFT CORPORATION (2).pdf", "rb") as pdf_file:
   #   pdf_reader = PyPDF2.PdfReader(pdf_file)
   #   # Extract text from the PDF
